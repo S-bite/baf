@@ -33,6 +33,11 @@ class TestSplitMethods(unittest.TestCase):
         choosable_tokens = make_choosable_tokens(tokens)
         self.assertEqual(choosable_tokens, [
                          "a", " ", "=", " ", ["1", "2", "3"]])
+        src = "a = /* @ 1, 2, 3 *//* @ 1, 2, 3 */"
+        tokens = tokenize(src)
+        choosable_tokens = make_choosable_tokens(tokens)
+        self.assertEqual(choosable_tokens, [
+                         "a", " ", "=", " ", ["1", "2", "3"], ["1", "2", "3"]])
 
 
 if __name__ == '__main__':
