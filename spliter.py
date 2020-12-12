@@ -34,6 +34,9 @@ def make_choosable_tokens(tokens):
     next_token_index = 0
     while (next_token_index < len(tokens)):
         if next_tokens_are_annotation(tokens, next_token_index):
+            # remove last non-space token to replace it with annotated values
+            while choosable_tokens.pop(-1) == " ":
+                pass
             # consume comemnt_token_begin
             assert(tokens[next_token_index] == comemnt_token_begin)
             _, next_token_index = get_next_nonspace_token(

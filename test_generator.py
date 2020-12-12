@@ -9,11 +9,11 @@ import sys
 
 class TestGenerateMethods(unittest.TestCase):
     def test_generate_every_possible_code(self):
-        src = "a = /* @ 1, 2, 3 */"
+        src = "a = 3 /* @ 1, 2, 3 */"
         possible_codes = generate_every_possible_code(
             make_choosable_tokens(tokenize(src)))
         self.assertEqual(possible_codes, ["a = 1", "a = 2", "a = 3"])
-        src = "a = /* @ 1, 2, 3 *//* @ 1, 2, 3 */"
+        src = "a = 3 /* @ 1, 2, 3 */0/* @ 1, 2, 3 */"
         possible_codes = generate_every_possible_code(
             make_choosable_tokens(tokenize(src)))
         self.assertEqual(possible_codes, [

@@ -28,12 +28,12 @@ class TestSplitMethods(unittest.TestCase):
         self.assertEqual(next_tokens_are_annotation(tokens, 7), False)
 
     def test_make_choosable_tokens(self):
-        src = "a = /* @ 1, 2, 3 */"
+        src = "a = 0 /* @ 1, 2, 3 */"
         tokens = tokenize(src)
         choosable_tokens = make_choosable_tokens(tokens)
         self.assertEqual(choosable_tokens, [
                          "a", " ", "=", " ", ["1", "2", "3"]])
-        src = "a = /* @ 1, 2, 3 *//* @ 1, 2, 3 */"
+        src = "a = 0 /* @ 1, 2, 3 */0/* @ 1, 2, 3 */"
         tokens = tokenize(src)
         choosable_tokens = make_choosable_tokens(tokens)
         self.assertEqual(choosable_tokens, [
