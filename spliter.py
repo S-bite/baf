@@ -57,7 +57,3 @@ def make_choosable_tokens(tokens):
             choosable_tokens.append(tokens[next_token_index])
             next_token_index += 1
     return choosable_tokens
-
-
-def generate_every_possible_code(tokens):
-    pass
